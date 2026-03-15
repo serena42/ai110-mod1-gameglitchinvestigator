@@ -10,6 +10,15 @@ Answer each question in 3 to 5 sentences. Be specific and honest about what actu
 
 ---
 
+the hints were backward
+there was no way to reset the game score
+score never resets
+will report socre as postive when you win, but is negative while you play
+you have to hit submit guess twice after the first time if you change the number you're guessing (is this the state bug?)
+the final score has nothing to do with the score in the debug section (at least for hard)
+the difficulty levels have different problems from each other
+
+
 ## 2. How did you use AI as a teammate?
 
 - Which AI tools did you use on this project (for example: ChatGPT, Gemini, Copilot)?

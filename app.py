@@ -118,9 +118,12 @@ with st.expander("Developer Debug Info"):
     st.write("Difficulty:", difficulty)
     st.write("History:", st.session_state.history)
 
+if "raw_guess" not in st.session_state:
+    st.session_state.raw_guess = ""
+
 raw_guess = st.text_input(
     "Enter your guess:",
-    key=f"guess_input_{difficulty}"
+    key="raw_guess"
 )
 
 col1, col2, col3 = st.columns(3)
