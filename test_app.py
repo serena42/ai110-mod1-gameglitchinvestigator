@@ -1,5 +1,5 @@
 from streamlit.testing.v1 import AppTest
-from app import check_guess
+from logic_utils import check_guess
 
 
 def test_guess_persists_on_rerun():
