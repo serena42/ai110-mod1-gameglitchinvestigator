@@ -1,4 +1,5 @@
 from streamlit.testing.v1 import AppTest
+from app import check_guess
 
 
 def test_guess_persists_on_rerun():
@@ -15,3 +16,20 @@ def test_guess_persists_on_rerun():
     # The history should contain both guesses, not 42 twice
     assert 42 in at.session_state["history"], "First guess was not recorded"
     assert 75 in at.session_state["history"], "Second guess was not registered — state bug may still be present"
+
+
+def test_hint_too_high():
+    outcome, message = check_guess(80, 50)
+    assert outcome == "Too High"
+    assert "LOWER" in message, f"Expected hint to say LOWER, got: {message}"
+
+
+def test_hint_too_low():
+    outcome, message = check_guess(20, 50)
+    assert outcome == "Too Low"
+    assert "HIGHER" in message, f"Expected hint to say HIGHER, got: {message}"
+
+
+def test_hint_correct():
+    outcome, message = check_guess(50, 50)
+    assert outcome == "Win"
