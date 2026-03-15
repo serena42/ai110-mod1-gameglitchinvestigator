@@ -33,3 +33,17 @@ def test_hint_too_low():
 def test_hint_correct():
     outcome, message = check_guess(50, 50)
     assert outcome == "Win"
+
+
+def test_hint_persists_after_rerun():
+    at = AppTest.from_file("app.py").run()
+
+    # Submit a guess
+    at.text_input("raw_guess").set_value("1").run()
+    at.button[0].click().run()
+
+    # Simulate a rerun without clicking submit (e.g. user just looks at the page)
+    at.run()
+
+    # The hint should still be visible via session state
+    assert at.session_state["last_message"] is not None, "Hint disappeared after rerun"
