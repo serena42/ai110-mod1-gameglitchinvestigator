@@ -61,4 +61,8 @@ The Impossible Number Guesser is a Streamlit guessing game where the player trie
 
 ## 🚀 Stretch Features
 
-- [ ] [If you choose to complete Challenge 4, insert a screenshot of your Enhanced Game UI here]
+### High Score Tracker
+
+A high score tracker was added to the sidebar using `st.session_state`. The best score persists across new games for the duration of the browser session. When a win beats the current high score, a toast notification appears. The score resets to 0 on new game, but the high score does not — it only updates when beaten.
+
+![High score tracker showing best score persisting after new game](screenshot_high_score.png)

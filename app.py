@@ -27,6 +27,10 @@ low, high = get_range_for_difficulty(difficulty)
 st.sidebar.caption(f"Range: {low} to {high}")
 st.sidebar.caption(f"Attempts allowed: {attempt_limit}")
 
+st.sidebar.divider()
+st.sidebar.header("High Score")
+st.sidebar.metric("Best Score", st.session_state.get("high_score", 0))
+
 if "secret" not in st.session_state:
     st.session_state.secret = random.randint(low, high)
 
@@ -44,6 +48,9 @@ if "history" not in st.session_state:
 
 if "last_message" not in st.session_state:
     st.session_state.last_message = None
+
+if "high_score" not in st.session_state:
+    st.session_state.high_score = 0
 
 st.subheader("Make a guess")
 
@@ -121,6 +128,9 @@ if submit:
         if outcome == "Win":
             st.balloons()
             st.session_state.status = "won"
+            if st.session_state.score > st.session_state.high_score:
+                st.session_state.high_score = st.session_state.score
+                st.toast("New high score!")
             st.success(
                 f"You won! The secret was {st.session_state.secret}. "
                 f"Final score: {st.session_state.score}"
