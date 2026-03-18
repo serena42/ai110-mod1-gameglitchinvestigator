@@ -10,7 +10,7 @@ Answer each question in 3 to 5 sentences. Be specific and honest about what actu
 
 ---
 
-When I first ran the game, the hints were backward — guessing too high told you to go higher, and guessing too low told you to go lower. The score never reset when starting a new game, so it carried over between rounds. The submit button had to be clicked twice after changing a guess, which turned out to be the state bug — the text input wasn't persisting its value across reruns.
+When I first ran the game, the hints were backward — guessing too high told you to go higher, and guessing too low told you to go lower. The bug was in `check_guess()` in `logic_utils.py`, where the "Too High" and "Too Low" branches returned the wrong strings. Expected: a guess of 80 when the secret is 50 should say "Go LOWER!"; actual: it said "Go HIGHER!". The score never reset when starting a new game, so it carried over between rounds — because the new game handler in `app.py` reset every session state variable except `st.session_state.score`. Expected: score should be 0 at the start of each game; actual: it accumulated across games. The submit button had to be clicked twice after changing a guess, which turned out to be the state bug — `st.text_input` was using a difficulty-keyed key so the new value wasn't committed to session state before the button click was processed. Expected: one click should always submit the current value; actual: the first click used the previous value.
 
 
 
