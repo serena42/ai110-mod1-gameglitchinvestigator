@@ -51,7 +51,9 @@ The Impossible Number Guesser is a Streamlit guessing game where the player trie
 
 ## 📸 Demo
 
-- [ ] [Insert a screenshot of your fixed, winning game here]
+![Fixed game showing correct hint](screenshot_fixed_game.png)
+
+*Secret is 30, guess is 11 — hint correctly says "Go HIGHER!" confirming the backward hints bug is fixed.*
 
 ## 🚀 Stretch Features
 
