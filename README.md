@@ -49,6 +49,10 @@ The Impossible Number Guesser is a Streamlit guessing game where the player trie
 - Added `st.session_state.status = "playing"` to the new game handler
 - Refactored `check_guess`, `parse_guess`, `update_score`, and `get_range_for_difficulty` into `logic_utils.py` and added pytest coverage
 
+## ✅ Test Results
+
+![All 12 pytest tests passing](screenshot_pytest.png)
+
 ## 📸 Demo
 
 ![Fixed game showing correct hint](screenshot_fixed_game.png)
